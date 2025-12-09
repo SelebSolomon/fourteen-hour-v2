@@ -1,0 +1,94 @@
+GET http://localhost:3000
+
+###
+GET http://localhost:3000/songs?page=2&limit=1
+
+###
+
+GET http://localhost:3000/songs/1
+
+###
+
+POST http://localhost:3000/songs
+Content-Type:  application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9tYWhAZ21haWwuY29tIiwidXNlcklkIjo2LCJhcnRpc3RJZCI6MSwiaWF0IjoxNzY1MDE2NTkzLCJleHAiOjE3NjUxMDI5OTN9.8sCheeYu4tbPkIfJeBLQ3bXdHeFl2Fp6nSnkG8wxoXE
+
+{
+    "title": "fish",
+    "artists": [1],
+    "releasedDate": "2025-07-07",
+    "duration": "04:03",
+    "lyrics": "You are my life"
+}
+
+###
+
+PUT http://localhost:3000/songs/1
+Content-Type:  application/json
+
+{
+    
+    "title": "soso",
+    "artists": ["Omahlay", "Solomon"],
+    "releasedDate": "2022-07-07",
+    "duration": "04:03",
+    "lyrics": "You are my life"
+}
+
+###
+
+DELETE  http://localhost:3000/songs/4
+
+###
+
+#omah apy key temp 5a23fbd9-fb71-409e-841f-adc06b033597
+POST http://localhost:3000/auth/signup
+Content-Type: application/json
+
+{
+"firstName": "omah",
+"lastName": "ovenss",
+"email": "omah@gmail.com",
+"password": "123456"
+}
+###
+
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+"email": "omah@gmail.com",
+"password": "123456"
+}
+
+# eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNlbGViQGdtYWlsLmNvbSIsInN1YiI6NSwiaWF0IjoxNzY0OTkwOTM3LCJleHAiOjE3NjUwNzczMzd9.4Kb5wlpbTYQpKlQSs2DN7KMucGgRKnZt5ggRzKu7N8M
+###
+GET http://localhost:3000/profile
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNlbGViQGdtYWlsLmNvbSIsInN1YiI6NSwiaWF0IjoxNzY0OTkwOTM3LCJleHAiOjE3NjUwNzczMzd9.4Kb5wlpbTYQpKlQSs2DN7KMucGgRKnZt5ggRzKu7N8M
+
+
+###
+POST http://localhost:3000/auth/enable-2fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9tYWhAZ21haWwuY29tIiwidXNlcklkIjo2LCJhcnRpc3RJZCI6MSwiaWF0IjoxNzY1MDIxMzY2LCJleHAiOjE3NjUxMDc3NjZ9.4J3_VMyi1l8_xsdAHIygiV5SSSVCEOJVtmfyEz8rsGY
+
+
+###
+
+POST http://localhost:3000/auth/validate-2fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9tYWhAZ21haWwuY29tIiwidXNlcklkIjo2LCJhcnRpc3RJZCI6MSwiaWF0IjoxNzY1MDIyNDI2LCJleHAiOjE3NjUxMDg4MjZ9.gON2hq54c8rbExqxNq5A8QiuOAVq5D2goKXHvI2uyq0
+Content-Type: application/json
+
+{
+"token": "336537"
+}
+
+###
+GET http://localhost:3000/auth/disable-2fa
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im9tYWhAZ21haWwuY29tIiwidXNlcklkIjo2LCJhcnRpc3RJZCI6MSwiaWF0IjoxNzY1MDIyNDI2LCJleHAiOjE3NjUxMDg4MjZ9.gON2hq54c8rbExqxNq5A8QiuOAVq5D2goKXHvI2uyq0
+
+### API KEY AUTHENTICATION PROFILE ROUTE
+GET http://localhost:3000/auth/profile
+Authorization: Bearer 5a23fbd9-fb71-409e-841f-adc06b033597
+
+### TEST ENV VARIABLES
+GET http://localhost:3000/auth/test
