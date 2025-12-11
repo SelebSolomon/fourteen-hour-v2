@@ -57,10 +57,16 @@
 
 // AI GENERATED
 import { DataSource, DataSourceOptions } from 'typeorm';
+// import * as dotenv from 'dotenv';
+
+// // Load .env for the CLI (NestJS does NOT run here)
+// dotenv.config({ path: `${process.cwd()}/.env.development` });
 import * as dotenv from 'dotenv';
 
-// Load .env for the CLI (NestJS does NOT run here)
-dotenv.config({ path: `${process.cwd()}/.env.development` });
+const envFile = `.env.${process.env.NODE_ENV || 'development'}`;
+dotenv.config({ path: `${process.cwd()}/${envFile}` });
+
+console.log('Using env file:', envFile);
 
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
@@ -80,6 +86,7 @@ import {
 //   DB_PASSWORD: process.env.DB_PASSWORD,
 //   DB_NAME: process.env.DB_NAME,
 // });
+// THIS IS USED IN APP MODULE FOR TYPEORM SETUP
 export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
   imports: [ConfigModule],
   inject: [ConfigService],
@@ -105,6 +112,7 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
   },
 };
 
+// THIS IS USED FOR SEEDING MIGRATIONS AND TYPEORM CLI
 export const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',
   host: process.env.DB_HOST,

@@ -35,9 +35,11 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document); //3
 
   const configService = app.get(ConfigService);
-  const port = configService.get<number>('port') || 3000;
-  await app.listen(port);
+  const port = configService.get<number>('port');
+  await app.listen(port!);
+
   console.log(`Application is running on: http://localhost:${port}`);
+  console.log(configService.get<string>('NODE_ENV'));
 
   // Hot Module Replacement
   if (module.hot) {
