@@ -63,7 +63,7 @@ import { DataSource, DataSourceOptions } from 'typeorm';
 // dotenv.config({ path: `${process.cwd()}/.env.development` });
 import * as dotenv from 'dotenv';
 
-const envFile = `.env.${process.env.NODE_ENV || 'development'}`;
+const envFile = `.env.${process.env.NODE_ENV}`;
 dotenv.config({ path: `${process.cwd()}/${envFile}` });
 
 console.log('Using env file:', envFile);
