@@ -1,0 +1,21 @@
+PORT=3000
+SECRET=HAD_12X#@
+
+# railway 
+DB_HOST=postgres-p4uv.railway.internal
+DB_PORT=5432
+DB_USERNAME=postgres
+DB_PASSWORD=mPUrfenoULhJCUnfYULJHERpiwuPRpfS
+DB_NAME=railway
+
+# Render
+# DB_HOST=dpg-d4t5be7gi27c73d8he4g-a
+# DB_PORT=5432
+# DB_USERNAME=fourteen_hour_v2_database_user
+# DB_PASSWORD=xHzlYkPrYYcYun1C2taDk0h9EmkbUAUr
+# DB_NAME=fourteen_hour_v2_database
+
+
+NODE_ENV=production
+
+
