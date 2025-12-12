@@ -56,17 +56,6 @@
 // export default dataSource;
 
 // AI GENERATED
-import { DataSource, DataSourceOptions } from 'typeorm';
-// import * as dotenv from 'dotenv';
-
-// // Load .env for the CLI (NestJS does NOT run here)
-// dotenv.config({ path: `${process.cwd()}/.env.development` });
-import * as dotenv from 'dotenv';
-
-const envFile = `.env.${process.env.NODE_ENV}`;
-dotenv.config({ path: `${process.cwd()}/${envFile}` });
-
-console.log('Using env file:', envFile);
 
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
@@ -78,6 +67,9 @@ import {
   TypeOrmModuleAsyncOptions,
   TypeOrmModuleOptions,
 } from '@nestjs/typeorm';
+
+import 'dotenv/config';
+import { DataSource, DataSourceOptions } from 'typeorm';
 
 // console.log('Loaded for CLI:', {
 //   DB_HOST: process.env.DB_HOST,
@@ -97,8 +89,8 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
       type: 'postgres',
       host: configService.get<string>('DB_HOST'),
       port: configService.get<number>('DB_PORT'),
-      username: configService.get<string>('DB_USERNAME'),
-      password: configService.get<string>('DB_PASSWORD'),
+      username: configService.get<string>('USERNAME'),
+      password: configService.get<string>('PASSWORD'),
       database: configService.get<string>('DB_NAME'),
       entities: [User, Playlist, Artist, Song],
       synchronize: false,

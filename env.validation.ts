@@ -25,10 +25,10 @@ class EnvironmentVariables {
   DB_PORT: number;
 
   @IsString()
-  DB_USERNAME: string;
+  USERNAME: string;
 
   @IsString()
-  DB_PASSWORD: string;
+  PASSWORD: string;
 
   @IsString()
   DB_NAME: string;
@@ -42,7 +42,7 @@ export function validate(config: Record<string, unknown>) {
     enableImplicitConversion: true,
   });
   const errors = validateSync(validatedConfig, {
-    skipMissingProperties: true,
+    skipMissingProperties: false,
   });
 
   if (errors.length > 0) {
