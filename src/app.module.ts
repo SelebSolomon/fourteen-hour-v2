@@ -84,6 +84,16 @@
 
 // PRODUCTION OVER HERE
 
+import * as dotenv from 'dotenv';
+
+if (process.env.NODE_ENV !== 'production') {
+  const envFile = `.env.${process.env.NODE_ENV}`;
+  dotenv.config({ path: `${process.cwd()}/${envFile}` });
+  console.log('Using env file:', envFile);
+} else {
+  console.log('Using Railway environment variables');
+}
+
 import {
   MiddlewareConsumer,
   Module,
