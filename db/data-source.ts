@@ -95,17 +95,22 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
   ): Promise<TypeOrmModuleOptions> => {
     return {
       type: 'postgres',
-      host: configService.get<string>('dbHost'),
-      port: configService.get<number>('dbPort'),
-      username: configService.get<string>('username'),
-      password: configService.get<string>('password'),
-      database: configService.get<string>('dbName'),
+      host: configService.get<string>('DB_HOST'),
+      port: configService.get<number>('DB_PORT'),
+      username: configService.get<string>('DB_USERNAME'),
+      password: configService.get<string>('DB_PASSWORD'),
+      database: configService.get<string>('DB_NAME'),
       entities: [User, Playlist, Artist, Song],
       synchronize: false,
       migrations: ['dist/db/migrations/*.js'],
     };
   },
 };
+
+console.log(
+  'Database configuration for CLI:',
+  typeOrmAsyncConfig.useFactory(new ConfigService()),
+);
 
 // THIS IS USED FOR SEEDING MIGRATIONS AND TYPEORM CLI
 export const dataSourceOptions: DataSourceOptions = {
