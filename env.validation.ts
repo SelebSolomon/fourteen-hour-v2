@@ -1,5 +1,5 @@
 import { plainToInstance } from 'class-transformer';
-import { IsEnum, IsNumber, IsString, validateSync } from 'class-validator';
+import { IsEnum, IsNumber, IsNumberString, IsString, validateSync } from 'class-validator';
 import { Type } from 'class-transformer';
 
 enum Environment {
@@ -20,9 +20,8 @@ class EnvironmentVariables {
   @IsString()
   DB_HOST: string;
 
-  @IsNumber()
-  @Type(() => Number)
-  DB_PORT: number;
+  @IsNumberString()
+  DB_PORT: string;
 
   @IsString()
   USERNAME: string;
