@@ -124,11 +124,11 @@ import { validate } from 'env.validation';
     ConfigModule.forRoot({
       envFilePath:
         process.env.NODE_ENV !== 'production'
-          ? [`${process.cwd()}/.env.${process.env.NODE_ENV}`]
-          : undefined, // don't load env file on Railway
+          ? `.env.${process.env.NODE_ENV}`
+          : undefined, // <- do NOT load a file in production
       isGlobal: true,
       load: [configuration],
-      validate: process.env.NODE_ENV !== 'production' ? validate : undefined,
+      validate, // optional
     }),
     TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
     SongsModule,
