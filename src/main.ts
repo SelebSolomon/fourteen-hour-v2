@@ -39,7 +39,7 @@ async function bootstrap() {
   await app.listen(port!);
 
   console.log(`Application is running on: http://localhost:${port}`);
-  console.log(configService.get<string>('NODE_ENV'));
+  console.log('kkkkkkkkkkkk', configService.get<string>('NODE_ENV'));
 
   // Hot Module Replacement
   if (module.hot) {
