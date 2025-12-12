@@ -68,7 +68,8 @@ import {
   TypeOrmModuleOptions,
 } from '@nestjs/typeorm';
 
-import 'dotenv/config';
+require('dotenv').config();
+
 import { DataSource, DataSourceOptions } from 'typeorm';
 
 // console.log('Loaded for CLI:', {
