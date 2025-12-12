@@ -123,12 +123,7 @@ import { validate } from 'env.validation';
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: process.env.NODE_ENV
-        ? `.env.${process.env.NODE_ENV}`
-        : '.env',
-      ignoreEnvFile: process.env.RAILWAY_ENVIRONMENT_ID ? true : false,
-      load: [configuration],
-      validate,
+      ignoreEnvFile: process.env.RAILWAY_ENVIRONMENT ? true : false,
     }),
     TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
     SongsModule,
