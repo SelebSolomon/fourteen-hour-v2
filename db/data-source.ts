@@ -107,11 +107,6 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
   },
 };
 
-// console.log(
-//   'Database configuration for CLI:',
-//   typeOrmAsyncConfig.useFactory(new ConfigService()),
-// );
-
 // THIS IS USED FOR SEEDING MIGRATIONS AND TYPEORM CLI
 export const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',
