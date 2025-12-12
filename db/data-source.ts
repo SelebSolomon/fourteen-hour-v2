@@ -93,18 +93,13 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
   useFactory: async (
     configService: ConfigService,
   ): Promise<TypeOrmModuleOptions> => {
-    const password = configService.get<string>('password');
-    if (!password) {
-      throw new Error('Database password is missing');
-    }
-
     return {
       type: 'postgres',
-      host: configService.get<string>('dbHost')!,
-      port: configService.get<number>('dbPort')!,
-      username: configService.get<string>('username')!,
-      password,
-      database: configService.get<string>('dbName')!,
+      host: configService.get<string>('DB_HOST'),
+      port: configService.get<number>('DB_PORT'),
+      username: configService.get<string>('USERNAME'),
+      password: configService.get<string>('DB_PASSWORD'),
+      database: configService.get<string>('DB_NAME'),
       entities: [User, Playlist, Artist, Song],
       synchronize: false,
       migrations: ['dist/db/migrations/*.js'],
@@ -117,7 +112,7 @@ export const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',
   host: process.env.DB_HOST,
   port: parseInt(process.env.DB_PORT!),
-  username: process.env.DB_USER,
+  username: process.env.USERNAME,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   entities: ['dist/**/*.entity.js'],
