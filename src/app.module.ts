@@ -124,8 +124,8 @@ import { validate } from 'env.validation';
     ConfigModule.forRoot({
       envFilePath: [`${process.cwd()}/.env.${process.env.NODE_ENV}`],
       isGlobal: true,
-      load: [configuration],
-      // validate: validate,
+      // load: [configuration],
+      validate: validate,
     }),
     TypeOrmModule.forRootAsync(typeOrmAsyncConfig),
     SongsModule,
