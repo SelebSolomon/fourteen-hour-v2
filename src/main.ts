@@ -1,3 +1,13 @@
+import * as dotenv from 'dotenv';
+
+if (process.env.NODE_ENV !== 'production') {
+  const envFile = `.env.${process.env.NODE_ENV}`;
+  dotenv.config({ path: `${process.cwd()}/${envFile}` });
+  console.log('Using env file:', envFile);
+} else {
+  console.log('Using Railway/Render environment variables');
+}
+
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
