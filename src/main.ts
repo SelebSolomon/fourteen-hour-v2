@@ -17,6 +17,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 declare const module: any;
 
 console.log('NODE_ENV =', process.env.NODE_ENV);
+console.log('RAILWAY ENV:', process.env);
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
