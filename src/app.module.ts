@@ -102,8 +102,8 @@ import { DataSource } from 'typeorm';
 // import { Artist } from './artists/artist.entity';
 // import { User } from './users/user.entity';
 import { AuthModule } from './auth/auth.module';
-// import { UsersController } from './users/users.controller';
-// import { UsersService } from './users/users.service';;
+// import { UsersController } from './users/users.controller';/
+// import { UsersService } from './users/users.service';
 import { UsersModule } from './users/users.module';
 import { ArtistsModule } from './artists/artists.module';
 import { typeOrmAsyncConfig } from 'db/data-source';
