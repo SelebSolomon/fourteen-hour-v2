@@ -86,7 +86,7 @@ import {
 //   DB_PASSWORD: process.env.DB_PASSWORD,
 //   DB_NAME: process.env.DB_NAME,
 // });
-// THIS IS USED IN APP MODULE FOR TYPEORM SETUPpp
+// THIS IS USED IN APP MODULE FOR TYPEORM SETUPp
 export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
   imports: [ConfigModule],
   inject: [ConfigService],
