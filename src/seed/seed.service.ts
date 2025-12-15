@@ -8,7 +8,8 @@ export class SeedService {
   async seed(): Promise<void> {
     const queryRunner = this.connection.createQueryRunner(); //1
     await queryRunner.connect(); //2
-    await queryRunner.startTransaction(); //3
+    await queryRunner.startTransaction(); //
+
     try {
       const manager = queryRunner.manager;
       await seedData(manager);
