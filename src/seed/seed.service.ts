@@ -18,7 +18,7 @@ export class SeedService {
       console.log('Error during database seeding:', err);
       await queryRunner.rollbackTransaction(); // 5
     } finally {
-      await queryRunner.release(); //666
+      await queryRunner.release(); //66
     }
   }
 }
