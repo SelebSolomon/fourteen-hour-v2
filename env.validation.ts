@@ -25,10 +25,10 @@ class EnvironmentVariables {
   DB_PORT: number;
 
   @IsString()
-  USERNAME: string;
+  DB_USERNAME: string;
 
   @IsString()
-  PASSWORD: string;
+  DB_PASSWORD: string;
 
   @IsString()
   DB_NAME: string;

@@ -1,12 +1,10 @@
-// import * as dotenv from 'dotenv';
+import 'dotenv/config';
 
-// if (process.env.NODE_ENV !== 'production') {
-//   const envFile = `.env.${process.env.NODE_ENV}`;
-//   dotenv.config({ path: `${process.cwd()}/${envFile}` });
-//   console.log('Using env file:', envFile);
-// } else {
-//   console.log('Using Railway/Render environment variables');
-// }
+console.log('NODE_ENV =', process.env.NODE_ENV);
+
+const envFile = `.env.${process.env.NODE_ENV || 'development'}`;
+console.log('Loading env file:', envFile);
+require('dotenv').config({ path: envFile });
 
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
@@ -17,7 +15,10 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 declare const module: any;
 
 console.log('NODE_ENV =', process.env.NODE_ENV);
-console.log('RAILWAY ENV:', process.env);
+// console.log('RAILWAY ENV:', process.env);
+
+// console.log('USERNAME:', process.env.USERNAME);
+// console.log('PASSWORD:', process.env.PASSWORD);
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);

@@ -111,6 +111,9 @@ import { SeedModule } from './seed/seed.module';
 import { ConfigModule } from '@nestjs/config';
 import configuration from './config/configuration';
 import { validate } from 'env.validation';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+import { join } from 'path';
 
 // const devConfig = {
 //   port: 3000,
@@ -121,8 +124,19 @@ import { validate } from 'env.validation';
 
 @Module({
   imports: [
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      typePaths: ['./**/*.graphql'],
+      definitions: {
+        path: join(process.cwd(), 'src/graphql.ts'),
+        outputAs: 'class',
+      },
+    }),
     ConfigModule.forRoot({
-      envFilePath: [`${process.cwd()}/.env.${process.env.NODE_ENV}`],
+      envFilePath: [
+        `.env.${process.env.NODE_ENV}`, // fallback
+        '.env', // default
+      ],
       isGlobal: true,
       load: [configuration],
       validate: validate,

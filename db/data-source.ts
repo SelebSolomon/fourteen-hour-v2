@@ -56,6 +56,7 @@
 // export default dataSource;
 
 // AI GENERATED
+import 'dotenv/config';
 
 import { ConfigModule, ConfigService } from '@nestjs/config';
 
@@ -68,17 +69,15 @@ import {
   TypeOrmModuleOptions,
 } from '@nestjs/typeorm';
 
-require('dotenv').config();
-
 import { DataSource, DataSourceOptions } from 'typeorm';
 
-// console.log('Loaded for CLI:', {
-//   DB_HOST: process.env.DB_HOST,
-//   DB_PORT: process.env.DB_PORT,
-//   DB_USER: process.env.DB_USER,
-//   DB_PASSWORD: process.env.DB_PASSWORD,
-//   DB_NAME: process.env.DB_NAME,
-// });
+console.log('Loaded for CLI:', {
+  DB_HOST: process.env.DB_HOST,
+  DB_PORT: process.env.DB_PORT,
+  USERNAME: process.env.DB_USERNAME,
+  PASSWORD: process.env.DB_PASSWORD,
+  DB_NAME: process.env.DB_NAME,
+});
 // THIS IS USED IN APP MODULE FOR TYPEORM SETUPp
 export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
   imports: [ConfigModule],
@@ -88,10 +87,10 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
   ): Promise<TypeOrmModuleOptions> => {
     return {
       type: 'postgres',
-      host: configService.get<string>('DB_HOST'),
-      port: configService.get<number>('DB_PORT'),
-      username: configService.get<string>('USERNAME'),
-      password: configService.get<string>('PASSWORD'),
+      host: configService.get<string>('DB_HOST'), // exact match
+      port: Number(configService.get<string>('DB_PORT')),
+      username: configService.get<string>('DB_USERNAME'), // exact match
+      password: configService.get<string>('DB_PASSWORD'), // exact match
       database: configService.get<string>('DB_NAME'),
       entities: [User, Playlist, Artist, Song],
       synchronize: false,
@@ -100,13 +99,21 @@ export const typeOrmAsyncConfig: TypeOrmModuleAsyncOptions = {
   },
 };
 
+console.log('DataSource Options:', {
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  USERNAME: process.env.DB_USERNAME,
+  PASSWORD: process.env.DB_PASSWORD,
+  DB_NAME: process.env.DB_NAME,
+});
+
 // THIS IS USED FOR SEEDING MIGRATIONS AND TYPEORM CLI
 export const dataSourceOptions: DataSourceOptions = {
   type: 'postgres',
   host: process.env.DB_HOST,
   port: parseInt(process.env.DB_PORT!),
-  username: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
+  username: process.env.USERNAME, // exact match
+  password: process.env.PASSWORD, // exact match
   database: process.env.DB_NAME,
   entities: ['dist/**/*.entity.js'],
   synchronize: false,

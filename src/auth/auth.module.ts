@@ -8,6 +8,7 @@ import { JWTStrategy } from './jwt.strategy';
 import { ArtistsModule } from 'src/artists/artists.module';
 import { ApiKeyStrategy } from './api-key-strategy';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { AuthResolver } from './auth.resolver';
 
 @Module({
   imports: [
@@ -25,7 +26,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, JWTStrategy, ApiKeyStrategy],
+  providers: [AuthService, JWTStrategy, ApiKeyStrategy, AuthResolver],
   exports: [AuthService],
 })
 export class AuthModule {}
